@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace GraphTutorial.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
@@ -25,6 +25,10 @@ namespace GraphTutorial.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        public ActionResult Error(string message,string debug) {
+            Flash(message,debug);
+            return RedirectToAction("Index");
         }
     }
 }
