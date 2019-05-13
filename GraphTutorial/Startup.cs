@@ -1,8 +1,5 @@
-﻿using System;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 using Owin;
-
-
 
 [assembly: OwinStartup(typeof(GraphTutorial.Startup))]
 
@@ -12,8 +9,7 @@ namespace GraphTutorial
     {
         public void Configuration(IAppBuilder app)
         {
-          ConfigureAuth(app);
+            //ConfigureAuth(app);
         }
-        
     }
 }

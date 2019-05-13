@@ -13,8 +13,11 @@ namespace GraphTutorial.Controllers
         // GET: Account
         public void SignIn()
         {
-            if (!Request.IsAuthenticated) {
-                Request.GetOwinContext().Authentication.Challenge(new AuthenticationProperties { RedirectUri = "/" }, OpenIdConnectAuthenticationDefaults.AuthenticationType);
+            if (!Request.IsAuthenticated)
+            {
+                    HttpContext.GetOwinContext().Authentication.Challenge
+                    (new AuthenticationProperties { RedirectUri = "/" }, 
+                    OpenIdConnectAuthenticationDefaults.AuthenticationType);
             }
             
         }

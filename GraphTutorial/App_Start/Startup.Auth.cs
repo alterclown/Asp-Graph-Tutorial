@@ -12,6 +12,10 @@ using System.Web;
 using GraphTutorial.Helpers;
 using GraphTutorial.TokenStorage;
 using System.IdentityModel.Claims;
+using Microsoft.Owin;
+
+[assembly: OwinStartup(typeof(GraphTutorial.Startup))]
+
 
 namespace GraphTutorial.App_Start
 {
@@ -45,6 +49,7 @@ namespace GraphTutorial.App_Start
               }
             );
         }
+     
         private static Task OnAuthenticationFailedAsync(AuthenticationFailedNotification<OpenIdConnectMessage,OpenIdConnectAuthenticationOptions> notification)
         {
             notification.HandleResponse();
