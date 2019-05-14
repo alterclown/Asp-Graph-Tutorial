@@ -1,15 +1,19 @@
-﻿using Microsoft.Owin;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.Owin;
 using Owin;
+
 
 [assembly: OwinStartup(typeof(GraphTutorial.Startup))]
 
 namespace GraphTutorial
 {
-    public partial class Startup
+    partial class Startup
     {
         public void Configuration(IAppBuilder app)
         {
-            //ConfigureAuth(app);
-        }
+            ConfigureAuth(app);
+        }           
     }
 }
+

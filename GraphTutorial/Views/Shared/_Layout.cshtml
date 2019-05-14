@@ -39,6 +39,13 @@
                                 new { @class = ViewBag.Current == "Calendar" ? "nav-link active" : "nav-link" })
                         </li>
                     }
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li class="nav-item" data-turbolinks="false">
+                            @Html.ActionLink("One Drive", "Index", "One Drive", new { area = "" },
+                                new { @class = ViewBag.Current == "One Drive" ? "nav-link active" : "nav-link" })
+                        </li>
+                    }
                 </ul>
                 <ul class="navbar-nav justify-content-end">
                     <li class="nav-item">
@@ -52,7 +59,7 @@
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                 @if (!string.IsNullOrEmpty(ViewBag.User.Avatar))
                                 {
-                                    <img src="@ViewBag.User.Avatar" class="rounded-circle align-self-center mr-2" style="width: 32px;">
+                                   <img src="@ViewBag.User.Avatar" class="rounded-circle align-self-center mr-2" style="width: 32px;">
                                 }
                                 else
                                 {

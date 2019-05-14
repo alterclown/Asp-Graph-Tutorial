@@ -14,10 +14,10 @@ using GraphTutorial.TokenStorage;
 using System.IdentityModel.Claims;
 using Microsoft.Owin;
 
-[assembly: OwinStartup(typeof(GraphTutorial.Startup))]
 
 
-namespace GraphTutorial.App_Start
+
+namespace GraphTutorial
 {
     public partial class Startup
     {
@@ -41,11 +41,7 @@ namespace GraphTutorial.App_Start
                   RedirectUri = redirectUri,
                   PostLogoutRedirectUri = redirectUri,
                   TokenValidationParameters = new TokenValidationParameters { ValidateIssuer = false},
-                  Notifications = new OpenIdConnectAuthenticationNotifications
-                  {
-                      AuthenticationFailed = OnAuthenticationFailedAsync,
-                      AuthorizationCodeReceived = OnAuthorizationCodeReceivedAsync
-                  }
+                  Notifications = new OpenIdConnectAuthenticationNotifications{ AuthenticationFailed = OnAuthenticationFailedAsync, AuthorizationCodeReceived = OnAuthorizationCodeReceivedAsync }
               }
             );
         }

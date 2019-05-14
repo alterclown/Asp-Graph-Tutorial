@@ -72,7 +72,7 @@ namespace GraphTutorial.TokenStorage
         }
         public CachedUser GetUserDetails() {
             sessionLock.EnterReadLock();
-            var cachedUser = JsonConvert.DeserializeObject<CachedUser>((string)httpContext.Session[cacheId]);
+            var cachedUser = JsonConvert.DeserializeObject<CachedUser>((string)httpContext.Session[cachedUserId]);
             sessionLock.ExitReadLock();
             return cachedUser;
         }
