@@ -29,8 +29,7 @@ namespace GraphTutorial.Helpers
         private static GraphServiceClient GetAuthenticatedClient()
         {
             return new GraphServiceClient(new DelegateAuthenticationProvider(
-                async (requestMessage) =>
-                {
+                async (requestMessage) =>{
                     string signedInUserId = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
                     SessionTokenStore sessionTokenStore = new SessionTokenStore(signedInUserId, new HttpContextWrapper(HttpContext.Current));
 
@@ -43,8 +42,7 @@ namespace GraphTutorial.Helpers
                     requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer",result.AccessToken);
                 }));
         }
-
-            public static async Task<User> GetUserDetailsAsync(string accessToken) {
+    public static async Task<User> GetUserDetailsAsync(string accessToken) {
             var graphClient = new GraphServiceClient(
                 new DelegateAuthenticationProvider(
                     async (requestMessage) =>
@@ -52,6 +50,6 @@ namespace GraphTutorial.Helpers
                         requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                     }));
             return await graphClient.Me.Request().GetAsync();
-        }
+    }
     }
 }
